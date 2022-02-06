@@ -10,7 +10,7 @@ interface Store {
     commonStore: CommonStore;
     userStore: UserStore,
     modalStore: ModalStore,
-    //profileStore: ProfileStore
+    profileStore: ProfileStore
 }
 
 export const store: Store = {
@@ -18,7 +18,7 @@ export const store: Store = {
     commonStore: new CommonStore(),
     userStore: new UserStore(),
     modalStore: new ModalStore(),
-    //profileStore: new ProfileStore ()
+    profileStore: new ProfileStore ()
 }
 
 export const StoreContext = createContext(store)
