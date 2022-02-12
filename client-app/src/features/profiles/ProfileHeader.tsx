@@ -31,7 +31,7 @@ export default observer(function ProfileHeader({profile}: Props) {
                         <Reveal.Content visible style={{width: '100%'}}>
                             <Button fluid color='teal' content='Following'/>
                         </Reveal.Content>
-                        <Reveal.Content visible style={{width: '100%'}}>
+                        <Reveal.Content hidden style={{width: '100%'}}>
                             <Button 
                                 fluid 
                                 basic

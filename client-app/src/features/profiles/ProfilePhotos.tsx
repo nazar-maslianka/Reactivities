@@ -45,7 +45,7 @@ export default observer(function ProfilePhotos({profile} : Props) {
                         {addPhotoMode ? (
                             <PhotoUploadWidget uploadPhoto={handlePhotoUpload} loading={uploading}/>
                         ) : (
-                             <Card.Group>
+                             <Card.Group itemsPerRow={5}>
                              {profile.photos?.map(photo => (
                                  <Card key={photo.id}>
                                      <Image src={photo.url}/>
