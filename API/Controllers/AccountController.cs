@@ -90,6 +90,7 @@ namespace API.Controllers
 
         private UserDTO CreateUserObject(AppUser user)
         {
+            //TODO fix later: 'Object reference not set to an instance of an object.'
             return new UserDTO
             {
                 DisplayName = user.DisplayName,
