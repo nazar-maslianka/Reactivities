@@ -15,9 +15,9 @@ namespace Infrastructure.Photos
         public PhotoAccessor(IOptions<CloudinarySettings> config)
         {
             var account = new Account(
+                config.Value.CloudName,
                 config.Value.ApiKey,
-                config.Value.ApiSecret,
-                config.Value.CloudName
+                config.Value.ApiSecret
             );
             _cloudinary = new Cloudinary(account);
         }
