@@ -1,26 +1,38 @@
-import { Formik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Container, Grid, Header, Tab } from 'semantic-ui-react';
 import { observer } from 'mobx-react-lite';
-import { Form, Button } from 'semantic-ui-react';
-import ReusableTextArea from '../../app/common/form/ReusableTextArea';
-import ReusableTextInput from '../../app/common/form/ReusableTextInput';
 import { useStore } from '../../app/stores/store';
+import ProfileEditForm from './ProfileEditForm';
 
+export default observer (function ProfileAbout () {
 
-export default observer(function ProfileAbout () {
-    const {userStore} = useStore();
+    const [editMode, setEditMode] = useState(false);
+    const {profileStore} = useStore();    
+    const {isCurrentUser, profile} = profileStore;
+
+    function truncate(bio: string | undefined) {
+        return bio !== undefined && bio!.length > 400 ? bio.substring(0,399) + "..." : bio;
+    }
+
     return (
-        <Formik 
-        initialValues={{email: '', password: '', error: null}}
-        onSubmit={(values, {setErrors}) => userStore.login(values).catch(error => 
-            setErrors({error: 'Invalid name'}))}
-        >
-            <Form> 
-                <Button content='Cancel' floated='right' basic/>
-                <ReusableTextInput placeholder='Name' name='name'/>
-                <ReusableTextArea placeholder='bio' name='bio' rows={12} />
-                <Button positive content='Update profile' type='submit' floated='right'/>
-            </Form>
-        </Formik>
+        <Tab.Pane>
+            <Grid>c
+                <Grid.Column width='16'>
+                    <Header icon='user' as='h3' content={'About '+ profile?.displayName} floated='left' />
+                        <Button 
+                            disabled={!isCurrentUser}
+                            floated='right'
+                            basic
+                            onClick={() => setEditMode(!editMode)}
+                            content={ !editMode ? 'Edit Profile' : 'Cancel'} />
+                </Grid.Column>
+                <Grid.Column width='16'>
+                    { !editMode 
+                        ? <span style={{wordBreak:'break-word', whiteSpace:'pre-wrap'}}>{truncate(profile?.bio)}</span>
+                        : <ProfileEditForm setEditMode={setEditMode} />
+                    }
+                </Grid.Column>
+            </Grid>
+        </Tab.Pane>
     )
 })

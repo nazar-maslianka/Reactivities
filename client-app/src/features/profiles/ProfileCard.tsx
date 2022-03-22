@@ -14,7 +14,7 @@ export default function ProfileCard ({profile} : Props) {
             <Image src={profile.image || `/assets/user.png/`}/>
             <Card.Content>
                 <Card.Header>{profile.displayName}</Card.Header>
-                <Card.Header>Bio</Card.Header>
+                <Card.Header>{profile.bio}</Card.Header>
             </Card.Content>
             <Card.Content extra>
                 <Icon name='user'/>
