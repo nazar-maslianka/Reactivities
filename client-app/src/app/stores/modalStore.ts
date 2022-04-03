@@ -1,4 +1,3 @@
-import { boolean } from 'yup/lib/locale';
 import { makeAutoObservable } from "mobx"
 
 interface Modal {
