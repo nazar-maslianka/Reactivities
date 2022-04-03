@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Grid, Header, Tab } from 'semantic-ui-react';
+import { Button, Grid, Header, Tab } from 'semantic-ui-react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../app/stores/store';
 import ProfileEditForm from './ProfileEditForm';
@@ -11,12 +11,14 @@ export default observer (function ProfileAbout () {
     const {isCurrentUser, profile} = profileStore;
 
     function truncate(bio: string | undefined) {
-        return bio !== undefined && bio!.length > 400 ? bio.substring(0,399) + "..." : bio;
+        if (bio) {
+            return bio !== undefined && bio!.length > 400 ? bio.substring(0,397) + "..." : bio;
+        }
     }
 
     return (
         <Tab.Pane>
-            <Grid>c
+            <Grid>
                 <Grid.Column width='16'>
                     <Header icon='user' as='h3' content={'About '+ profile?.displayName} floated='left' />
                         <Button 
