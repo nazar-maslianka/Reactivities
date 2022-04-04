@@ -338,3 +338,9 @@ ASALocalRun/
 
 # Migrations
 Persistence/Migrations
+
+#root folder
+API/wwwroot
+
+#SQLite database
+API/reactivities.db
