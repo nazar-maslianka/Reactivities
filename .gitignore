@@ -336,11 +336,5 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
-# Migrations
-Persistence/Migrations
-
-#root folder
-API/wwwroot
-
 #SQLite database
 API/reactivities.db
