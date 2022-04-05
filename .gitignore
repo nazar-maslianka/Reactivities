@@ -336,5 +336,8 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+#settings for app
+appsettings.json
+
 #SQLite database
 API/reactivities.db
