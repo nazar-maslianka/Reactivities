@@ -45,14 +45,29 @@ namespace API
             app.UseReferrerPolicy(opt => opt.NoReferrer());
             app.UseXXssProtection(opt => opt.EnabledWithBlockMode());
             app.UseXfo(opt => opt.Deny());
-            app.UseCsp(opt => opt
+            app.UseCspReportOnly(opt => opt
                 .BlockAllMixedContent()
-                .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com"))
-                .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
+                .StyleSources(s => s.Self().CustomSources(
+                    "https://fonts.googleapis.com",
+                    "sha256-yChqzBduCCi4o4xdbXRXh4U/t1rP4UUUMJt+rB+ylUI="
+                ))
+                .FontSources(s => s.Self().CustomSources(
+                    "https://fonts.gstatic.com", "data:"
+                ))
                 .FormActions(s => s.Self())
                 .FrameAncestors(s => s.Self())
-                .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com"))
-                .ScriptSources(s => s.Self().CustomSources("sha256-y12y3i6WJAZ01huNcvfmw8smkdhGptdJZLpAkErj1pQ="))
+                .ImageSources(s => s.Self().CustomSources(
+                    "https://res.cloudinary.com",
+                    "https://www.facebook.com",
+                    "https://platform-lookaside.fbsbx.com",
+                    "data:"
+                ))
+                .ScriptSources(s => s.Self()
+                    .CustomSources(
+                        "https://connect.facebook.net",
+                        "sha256-JI50ZwoQHFGyhxdZ4Np3papkZmyIEfWSN9nknzPRchA=",
+                        "sha256-y12y3i6WJAZ01huNcvfmw8smkdhGptdJZLpAkErj1pQ="
+                    ))
             );
 
             if (env.IsDevelopment())
