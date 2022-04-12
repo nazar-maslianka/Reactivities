@@ -26,7 +26,8 @@ function App() {
     if (commonStore.token){
       userStore.getUser().finally(() => commonStore.setUploaded());
     } else {
-      commonStore.setUploaded();
+      userStore.getFacebookLoginStatus().then(() =>
+        commonStore.setUploaded());
     }
   }, [commonStore, userStore])
 
