@@ -14,7 +14,7 @@ import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
 import ProfilePage from '../../features/profiles/ProfilePage';
-import TestErrors from '../../features/errors/TestError';
+import TestErrors from '../../features/errors/TestErrors';
 import PrivateRoute from './PrivateRoute';
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <ToastContainer position='bottom-right' hideProgressBar />
+      <ToastContainer position='bottom-right' theme='colored' hideProgressBar />
       <ModalContainer/>
       <Route exact path='/' component={HomePage}/>
       <Route
